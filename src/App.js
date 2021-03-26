@@ -14,7 +14,7 @@ class App extends Component {
       <>
         <Router>
           <Navbar />
-          <div className="container-fluid">
+          <div className="container mt-5">
             <Route path="/" exact component={TodosList} />
             <Route path="/edit/:id" component={EditTodo} />
             <Route path="/create" component={CreateTodo} />
