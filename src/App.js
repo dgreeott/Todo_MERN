@@ -13,12 +13,9 @@ class App extends Component {
     return (
       <>
         <Router>
-          <Navbar />
-          <div className="container mt-5">
-            <Route path="/" exact component={TodosList} />
-            <Route path="/edit/:id" component={EditTodo} />
-            <Route path="/create" component={CreateTodo} />
-          </div>
+          <Route path="/" exact component={TodosList} />
+          <Route path="/edit/:id" component={EditTodo} />
+          <Route path="/create" component={CreateTodo} />
         </Router>
       </>
     );

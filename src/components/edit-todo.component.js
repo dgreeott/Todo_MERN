@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Navbar from "./Navbar/Navbar";
 
 export default class EditTodo extends Component {
   constructor(props) {
@@ -85,6 +86,7 @@ export default class EditTodo extends Component {
   render = () => {
     return (
       <>
+        <Navbar />
         <div className="row justify-content-center " style={{ margin: 50 }}>
           <h3>Update To Do</h3>
         </div>
@@ -92,6 +94,49 @@ export default class EditTodo extends Component {
           <div className="row justify-content-center">
             <div className="col-sm-6 justify-content-center">
               <form onSubmit={this.onSubmit}>
+                <div className="row justify-content-center">
+                  <div className="col-sm-8 justify-content-center">
+                    <div className="form-group text-center">
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="priorityOptions"
+                          id="priorityImportant"
+                          value="Important"
+                          checked={this.state.todo_priority === "Important"}
+                          onChange={this.onChangeTodoPriority}
+                        />
+                        <label className="form-check-label">Important</label>
+                      </div>
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="priorityOptions"
+                          id="priorityIrrelevant"
+                          value="Irrelevant"
+                          checked={this.state.todo_priority === "Irrelevant"}
+                          onChange={this.onChangeTodoPriority}
+                        />
+                        <label className="form-check-label">Irrelevant</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="row justify-content-center m-2">
+                  <div className="col-sm-8 justify-content-center">
+                    <div className="form=group">
+                      <label>Heading: </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={this.state.todo_responsible}
+                        onChange={this.onChangeTodoResponsible}
+                      />
+                    </div>
+                  </div>
+                </div>
                 <div className="row justify-content-center m-3">
                   <div className="col-sm-8 justify-content-center">
                     <div className="form=group">
@@ -105,78 +150,39 @@ export default class EditTodo extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="row justify-content-center m-3">
-                  <div className="col-sm-8 justify-content-center">
-                    <div className="form=group">
-                      <label>Responsible: </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={this.state.todo_responsible}
-                        onChange={this.onChangeTodoResponsible}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="row justify-content-center mt-4">
-                  <div className="col-sm-8 justify-content-center">
-                    <div className="form-group text-center">
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="priorityOptions"
-                          id="priorityLow"
-                          value="Low"
-                          checked={this.state.todo_priority === "Low"}
-                          onChange={this.onChangeTodoPriority}
-                        />
-                        <label className="form-check-label">Low</label>
-                      </div>
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="priorityOptions"
-                          id="priorityMedium"
-                          value="Medium"
-                          checked={this.state.todo_priority === "Medium"}
-                          onChange={this.onChangeTodoPriority}
-                        />
-                        <label className="form-check-label">Medium</label>
-                      </div>
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="priorityOptions"
-                          id="priorityHigh"
-                          value="High"
-                          checked={this.state.todo_priority === "High"}
-                          onChange={this.onChangeTodoPriority}
-                        />
-                        <label className="form-check-label">High</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
                 <div className="row justify-content-center">
-                  <div className="col-sm-8 justify-content-center">
+                  <div className="col-sm-3 justify-content-center">
                     <div className="form-check text-center">
                       <input
-                        type="checkbox"
+                        type="radio"
                         classnName="form-check-input"
                         id="completedCheckbox"
                         name="completedCheckbox"
                         onChange={this.onChangeTodoCompleted}
-                        checked={this.state.todo_completed}
-                        value={this.state.todo_completed}
+                        checked={this.state.todo_completed === false}
+                        value={this.state.todo_completed === false}
                       />
                       <label
                         className="form-check-label"
                         htmlFor="completedCheckbox"
                       >
-                        Task Completed
+                        In Progress
+                      </label>
+                      <input
+                        type="radio"
+                        classnName="form-check-input"
+                        id="completedCheckbox"
+                        name="completedCheckbox"
+                        onChange={this.onChangeTodoCompleted}
+                        checked={this.state.todo_completed === true}
+                        value={this.state.todo_completed === true}
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="completedCheckbox"
+                      >
+                        Completed
                       </label>
                     </div>
                   </div>
