@@ -65,17 +65,22 @@ export default class CreateTodo extends Component {
       todo_priority: "",
       todo_completed: false,
     });
+
+    this.props.history.push("/");
   };
 
   render() {
     return (
       <>
         <Navbar />
-        <div style={{ marginTop: 20 }}>
-          <div className="container">
-            <h3>Create New To do Item</h3>
-            <form onSubmit={this.onSubmit}>
-            <div className="row justify-content-center">
+        <div className="row justify-content-center " style={{ margin: 50 }}>
+          <h3>New Task</h3>
+        </div>
+        <div className="container justify-content-center">
+          <div className="row justify-content-center">
+            <div className="col-sm-6 justify-content-center">
+              <form onSubmit={this.onSubmit}>
+                <div className="row justify-content-center">
                   <div className="col-sm-8 justify-content-center">
                     <div className="form-group text-center">
                       <div className="form-check form-check-inline">
@@ -105,32 +110,45 @@ export default class CreateTodo extends Component {
                     </div>
                   </div>
                 </div>
-              <div className="form-group">
-                <label>Description: </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={this.state.todo_description}
-                  onChange={this.onChangeTodoDescription}
-                />
-              </div>
-              <div className="form-group">
-                <label>Responsible: </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  value={this.state.todo_responsible}
-                  onChange={this.onChangeTodoResponsible}
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type="submit"
-                  value="Create"
-                  className="btn btn-primary"
-                />
-              </div>
-            </form>
+                <div className="row justify-content-center m-2">
+                  <div className="col-sm-8 justify-content-center">
+                    <div className="form-group">
+                      <label>Heading: </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={this.state.todo_responsible}
+                        onChange={this.onChangeTodoResponsible}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="row justify-content-center m-2">
+                  <div className="col-sm-8 justify-content-center">
+                    <div className="form-group">
+                      <label>Description: </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={this.state.todo_description}
+                        onChange={this.onChangeTodoDescription}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="row justify-content-center m-3">
+                  <div className="col-sm-8 justify-content-center">
+                    <div className="form-group text-center">
+                      <input
+                        type="submit"
+                        value="Create Task"
+                        className="btn btn-primary"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </>

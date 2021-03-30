@@ -1,20 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-export const Todo = (props) => (
-  /*
-    <tr>
-        <td >{props.todo.todo_description}</td>
-        <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_responsible}</td>
-        <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_priority}</td>
-        <td>
-            <Link to={"/edit/" + props.todo._id}>Edit</Link>
-        </td>
-        <p class="card-text">{props.todo.todo_priority}</p>
-    </tr>
-    */
 
-  <div className="card m-3">
+
+export const deleteTodo = (id) => {
+  return axios.delete('/pieces/delete' + id);
+};
+
+
+export const Todo = (props) => (  
+
+  <div className="card  m-3">
     <div className={props.todo.todo_completed ? "completed" : ""}>
       <div className="card-body">
         <h5 className="card-title">{props.todo.todo_responsible}</h5>
@@ -38,7 +35,9 @@ export const Todo = (props) => (
                 <h5>Edit</h5>
               </Link>
               <div className="dropdown-divider"></div>
-              <h5>Delete</h5>
+              <Link to={"/todos/" + props.todo._id} onClick={() => axios.delete(`/todos/${props.todo_id}`)}>
+                <h5>Delete</h5>
+              </Link>
             </div>
           </div>
         </div>
