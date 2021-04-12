@@ -5,17 +5,25 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const todoRoutes = express.Router();
 const PORT = 4000;
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 let Todo = require('./todo.modal');
 
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose
-  .connect("mongodb://127.0.0.1:27017/todos", {
-    useUnifiedTopology: true,
+const url = `${process.env.DB_CONNECT}`;
+
+const connectionParams={
     useNewUrlParser: true,
-  })
+    useCreateIndex: true,
+    useUnifiedTopology: true 
+}
+
+mongoose
+  .connect(url,connectionParams)
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
 
@@ -95,6 +103,8 @@ todoRoutes.route('/delete/:id').delete(function(req, res) {
 });
 
 app.use('/todos', todoRoutes);
+
+
 
 
 app.listen(PORT, function () {
