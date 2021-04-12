@@ -8,7 +8,9 @@ export default class TodosList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { todos: [] };
+    this.state = { todos: [],
+    inProgress: [],
+  completed: [] };
   }
 
   componentDidMount = () => {
@@ -41,17 +43,15 @@ export default class TodosList extends Component {
 
   progessList = () => {
     return this.state.todos.map(function (progressTodo, i) {
-      return <Todo todo={progressTodo} key={i} />;
+      return <Todo inProgress={progressTodo} key={i} />;
     });
   };
 
   completedList = () => {
     return this.state.todos.map(function (completedTodo, i) {
-      return <Todo todo={completedTodo} key={i} />;
+      return <Todo completed={completedTodo} key={i} />;
     });
   };
-
-  
 
   render() {
     return (
@@ -68,7 +68,6 @@ export default class TodosList extends Component {
                   <h3>To Do</h3>
                 </div>
                 <div className="col-sm-4 text-end">
-                  
                   <Link to={"/create/"}>
                     <h5 className="btn-sm btn-primary text-center">New Task</h5>
                   </Link>
@@ -85,7 +84,7 @@ export default class TodosList extends Component {
                 </div>
               </div>
               <div className="row justify-content-center">
-                <div className="col-sm">{this.todoList()}</div>
+                <div className="col-sm"></div>
               </div>
             </div>
             <div className="col-sm text-center">
@@ -95,7 +94,7 @@ export default class TodosList extends Component {
                 </div>
               </div>
               <div className="row justify-content-center">
-                <div className="col-sm">{this.todoList()}</div>
+                <div className="col-sm"></div>
               </div>
             </div>
           </div>

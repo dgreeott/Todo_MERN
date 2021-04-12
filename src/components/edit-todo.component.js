@@ -125,7 +125,7 @@ export default class EditTodo extends Component {
                   </div>
                 </div>
                 <div className="row justify-content-center m-2">
-                  <div className="col-sm-8 justify-content-center">
+                  <div className="col-sm-8 text-center">
                     <div className="form=group">
                       <label>Heading: </label>
                       <input
@@ -138,8 +138,8 @@ export default class EditTodo extends Component {
                   </div>
                 </div>
                 <div className="row justify-content-center m-3">
-                  <div className="col-sm-8 justify-content-center">
-                    <div className="form=group">
+                  <div className="col-sm-8 text-center">
+                    <div className="form-group">
                       <label>Description: </label>
                       <input
                         type="text"
@@ -152,39 +152,39 @@ export default class EditTodo extends Component {
                 </div>
 
                 <div className="row justify-content-center">
-                  <div className="col-sm-3 justify-content-center">
-                    <div className="form-check text-center">
-                      <input
-                        type="radio"
-                        classnName="form-check-input"
-                        id="completedCheckbox"
-                        name="completedCheckbox"
-                        onChange={this.onChangeTodoCompleted}
-                        checked={this.state.todo_completed === false}
-                        value={this.state.todo_completed === false}
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="completedCheckbox"
-                      >
-                        In Progress
-                      </label>
-                      <input
-                        type="radio"
-                        classnName="form-check-input"
-                        id="completedCheckbox"
-                        name="completedCheckbox"
-                        onChange={this.onChangeTodoCompleted}
-                        checked={this.state.todo_completed === true}
-                        value={this.state.todo_completed === true}
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="completedCheckbox"
-                      >
-                        Completed
-                      </label>
-                    </div>
+                  <div className="form-check text-center">
+                    <input
+                      type="radio"
+                      classnName="form-check-input"
+                      id="completedCheckbox"
+                      name="completedCheckbox"
+                      onChange={this.onChangeTodoCompleted}
+                      checked={this.state.todo_completed === false}
+                      value={this.state.todo_completed === false}
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor="completedCheckbox"
+                    >
+                      In Progress
+                    </label>
+                  </div>
+                  <div className="form-check text-center">
+                    <input
+                      type="radio"
+                      classnName="form-check-input"
+                      id="completedCheckbox"
+                      name="completedCheckbox"
+                      onChange={this.onChangeTodoCompleted}
+                      checked={this.state.todo_completed === true}
+                      value={this.state.todo_completed === true}
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor="completedCheckbox"
+                    >
+                      Completed
+                    </label>
                   </div>
                 </div>
                 <br />

@@ -88,15 +88,15 @@ todoRoutes.route("/update/:id").post(function (req, res) {
   });
 });
 
-todoRoutes.route("/delete/:id").delete(function (req, res) {
-  Todo.findByIdAndRemove(req.params.id, function (err, todo) {
+todoRoutes.route("/delete/:id").delete((req, res) => {
+  Todo.findByIdAndDelete(req.params.id, function (err, todo) {
     if (!todo) {
       res.status(404).send("data is no found");
     } else {
-      todo.todo_descirption = req.body.todo_descirption;
-      todo.todo_responsible = req.body.todo_responsible;
-      todo.todo_priority = req.body.todo_priority;
-      todo.todo_completed = req.body.todo_completed;
+      todo.todo_descirption = "";
+      todo.todo_responsible = "";
+      todo.todo_priority = "";
+      todo.todo_completed = "";
 
       todo
         .save()
@@ -111,6 +111,7 @@ todoRoutes.route("/delete/:id").delete(function (req, res) {
 });
 
 app.use("/todos", todoRoutes);
+
 
 app.listen(PORT, function () {
   console.log("Server is running on Port: " + PORT);
