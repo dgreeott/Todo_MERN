@@ -84,7 +84,7 @@ export default class TodosList extends Component {
                 </div>
               </div>
               <div className="row justify-content-center">
-                <div className="col-sm"></div>
+                <div className="col-sm">{this.progressList()}</div>
               </div>
             </div>
             <div className="col-sm text-center">
@@ -94,7 +94,7 @@ export default class TodosList extends Component {
                 </div>
               </div>
               <div className="row justify-content-center">
-                <div className="col-sm"></div>
+                <div className="col-sm">{this.completedList()}</div>
               </div>
             </div>
           </div>
