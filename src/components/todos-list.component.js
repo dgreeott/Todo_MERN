@@ -56,15 +56,16 @@ export default class TodosList extends Component {
   render() {
     return (
       <>
-        <div className="container justify-content-center mt-5">
-          <div className="row justify-content-center m-5">
+        <div className="container justify-content-center mt-5" >
+          <div className="row justify-content-center m-5" style={{color: "white"}}>
             <h2>To Do List</h2>
           </div>
 
           <div className="row justify-content-center">
             <div className="col-sm-4">
               <div className="row">
-                <div className="col-sm">
+
+                <div className="col-sm" style={{color: "white"}}>
                   <h3>To Do</h3>
                 </div>
                 <div className="col-sm-4 text-end">
@@ -74,27 +75,27 @@ export default class TodosList extends Component {
                 </div>
               </div>
               <div className="row justify-content-center">
+                <div className="col-sm text-center">{this.todoList()}</div>
+              </div>
+            </div>
+            <div className="col-sm text-center">
+              <div className="row">
+                <div className="col-sm" style={{color: "white"}}>
+                  <h3>In Progress</h3>
+                </div>
+              </div>
+              <div className="row justify-content-center">
                 <div className="col-sm">{this.todoList()}</div>
               </div>
             </div>
             <div className="col-sm text-center">
               <div className="row">
-                <div className="col-sm">
-                  <h3>In Progress</h3>
-                </div>
-              </div>
-              <div className="row justify-content-center">
-                <div className="col-sm">{this.progressList()}</div>
-              </div>
-            </div>
-            <div className="col-sm text-center">
-              <div className="row">
-                <div className="col-sm">
+                <div className="col-sm" style={{color: "white"}}>
                   <h3>Completed</h3>
                 </div>
               </div>
               <div className="row justify-content-center">
-                <div className="col-sm">{this.completedList()}</div>
+                <div className="col-sm">{this.todoList()}</div>
               </div>
             </div>
           </div>

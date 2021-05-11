@@ -7,7 +7,7 @@ export const deleteTodo = (id) => {
 };
 
 export const Todo = (props) => (
-  <div className="card  m-3">
+  <div className="card m-2" >
     <div className={props.todo.todo_completed ? "completed" : ""}>
       <div className="card-body">
         <h5 className="card-title">{props.todo.todo_responsible}</h5>
@@ -24,7 +24,7 @@ export const Todo = (props) => (
               aria-haspopup="true"
               aria-expanded="false"
             >
-              ...
+              <h3>...</h3>
             </button>
             <div className="dropdown-menu text-center">
               <Link to={"/edit/" + props.todo._id}>
