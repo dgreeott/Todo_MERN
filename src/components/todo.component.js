@@ -1,46 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { FiDelete, FiEdit } from "react-icons/fi";
 
 export const deleteTodo = (id) => {
   return axios.delete("/todos/delete/" + this.props.match.params.id);
 };
 
 export const Todo = (props) => (
-  <div className="card m-2" >
-    <div className={props.todo.todo_completed ? "completed" : ""}>
-      <div className="card-body">
-        <h5 className="card-title">{props.todo.todo_responsible}</h5>
-        <h6 className="card-subtitle mb-2 text-muted">
-          {props.todo.todo_description}
-        </h6>
-
-        <div className="row justify-content-end">
-          <div className="btn-group dropdown ">
-            <button
-              type="button"
-              className="btn"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+  <>
+    <div className="container-flex m-2 text-light">
+      <div className={props.todo.todo_completed ? "completed" : ""}>
+        <div className="row justify-content-center">
+          <div className="col-sm-10 text-center">
+            <h5>{props.todo.todo_description}</h5>
+          </div>
+          <div className="col-sm-2 text-end">
+            <Link to={"/edit/" + props.todo._id}>
+              <FiEdit size="25" />
+            </Link>
+            <Link
+              to={"/delete/" + props.todo._id}
+              onClick={() => axios.delete(`/delete/${props.todo_id}`)}
             >
-              <h3>...</h3>
-            </button>
-            <div className="dropdown-menu text-center">
-              <Link to={"/edit/" + props.todo._id}>
-                <h5>Edit</h5>
-              </Link>
-              <div className="dropdown-divider"></div>
-              <Link
-                to={"/delete/" + props.todo._id}
-                onClick={() => axios.delete(`/delete/${props.todo_id}`)}
-              >
-                <h5>Delete</h5>
-              </Link>
-            </div>
+              <FiDelete size="25" />
+            </Link>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </>
 );

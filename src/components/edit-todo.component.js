@@ -1,20 +1,18 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Navbar from "./Navbar/Navbar";
+import { withRouter } from "react-router-dom";
 
-export default class EditTodo extends Component {
+class EditTodo extends Component {
   constructor(props) {
     super(props);
 
     this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
-    this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
     this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
     this.onChangeTodoCompleted = this.onChangeTodoCompleted.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       todo_description: "",
-      todo_responsible: "",
       todo_priority: "",
       todo_completed: false,
     };
@@ -26,7 +24,6 @@ export default class EditTodo extends Component {
       .then((response) => {
         this.setState({
           todo_description: response.data.todo_description,
-          todo_responsible: response.data.todo_responsible,
           todo_priority: response.data.todo_priority,
           todo_completed: response.data.todo_completed,
         });
@@ -39,12 +36,6 @@ export default class EditTodo extends Component {
   onChangeTodoDescription = (e) => {
     this.setState({
       todo_description: e.target.value,
-    });
-  };
-
-  onChangeTodoResponsible = (e) => {
-    this.setState({
-      todo_responsible: e.target.value,
     });
   };
 
@@ -65,7 +56,6 @@ export default class EditTodo extends Component {
 
     const obj = {
       todo_description: this.state.todo_description,
-      todo_responsible: this.state.todo_responsible,
       todo_priority: this.state.todo_priority,
       todo_completed: this.state.todo_completed,
     };
@@ -86,11 +76,13 @@ export default class EditTodo extends Component {
   render = () => {
     return (
       <>
-        <Navbar />
         <div className="row justify-content-center " style={{ margin: 50 }}>
-          <h3>Update To Do</h3>
+          <h3 className="text-light">Update To Do</h3>
         </div>
-        <div className="container justify-content-center">
+        <div
+          className="container justify-content-center"
+          style={{ color: "white" }}
+        >
           <div className="row justify-content-center">
             <div className="col-sm-6 justify-content-center">
               <form onSubmit={this.onSubmit}>
@@ -121,19 +113,6 @@ export default class EditTodo extends Component {
                         />
                         <label className="form-check-label">Irrelevant</label>
                       </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="row justify-content-center m-2">
-                  <div className="col-sm-8 text-center">
-                    <div className="form=group">
-                      <label>Heading: </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={this.state.todo_responsible}
-                        onChange={this.onChangeTodoResponsible}
-                      />
                     </div>
                   </div>
                 </div>
@@ -207,3 +186,5 @@ export default class EditTodo extends Component {
     );
   };
 }
+
+export default withRouter(EditTodo);
